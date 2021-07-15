@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ExpenseDate from "./ExpenseDate";
 import Card from "../UI/Card";
 
 import "./ExpenseItem.css";
 
 const ExpenseItem = (props) => {
-  let title = props.title;
+  // функция setTitle меняет динамически значение переменной title
+  // и заново запускает jsx код
+  const [title, setTitle] = useState(props.title);
+  // let title = props.title;
 
   const clickHandler = () => {
-    title = 'Updated';
+    // title = 'Updated';
+    setTitle('Updated');         
   }
 
   return (
