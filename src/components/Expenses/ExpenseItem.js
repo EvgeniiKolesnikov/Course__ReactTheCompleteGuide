@@ -9,10 +9,11 @@ const ExpenseItem = (props) => {
   // и заново запускает jsx код
   const [title, setTitle] = useState(props.title);
   // let title = props.title;
-
+  console.log('ExpenseItem evaluated by React');
   const clickHandler = () => {
     // title = 'Updated';
-    setTitle('Updated');         
+    setTitle('Updated');
+    console.log(title);
   }
 
   return (
