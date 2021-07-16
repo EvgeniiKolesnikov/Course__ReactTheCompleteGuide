@@ -11,9 +11,12 @@ const Chart = (props) => {
         <ChartBar 
         key={dataPoint.label}
         value={dataPoint.value}
-        maxValue={null}label={dataPoint.label}
+        maxValue={null}
+        label={dataPoint.label}
         />
       )}
     </div>
   );
 }
+
+export default Chart;
