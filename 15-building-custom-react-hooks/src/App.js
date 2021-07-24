@@ -19,15 +19,9 @@ function App() {
   
       setTasks(loadedTasks);
     };
-    
+
     fetchTasks({ url: `${URL}` }, transformTasks);
   }, [fetchTasks]);
-
-
-
-
-
-
 
   const taskAddHandler = (task) => {
     setTasks((prevTasks) => prevTasks.concat(task));
