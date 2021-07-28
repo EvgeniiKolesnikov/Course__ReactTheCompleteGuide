@@ -10,3 +10,5 @@ ReactDOM.render(
   </BrowserRouter>,
   document.getElementById('root')
 );
+
+// удалить сайт с сервера через терминал - firebase hosting:disable
