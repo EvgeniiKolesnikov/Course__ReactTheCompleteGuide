@@ -1,5 +1,5 @@
 import { MongoClient } from 'mongodb';
-import { MONGODB_LINK } from './../../secure/keys';
+import MONGODB_LINK from './../../secure/keys';
 
 // /api/new-meetup
 // POST /api/new-meetup
