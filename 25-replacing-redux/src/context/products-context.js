@@ -5,6 +5,7 @@ export const ProductsContext = React.createContext({
   toggleFav: (id) => {}
 });
 
+// eslint-disable-next-line
 export default props => {
   const [productsList, setProductsList] = useState([
     {
