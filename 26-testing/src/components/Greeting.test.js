@@ -1,16 +1,20 @@
-import { render, screen } from '@testing-library/react';
-import Greeting from './Greeting';
+import { render, screen } from "@testing-library/react";
+import Greeting from "./Greeting";
 
-test('renders Hello World as a text', () => {
-  // Arrange
-  render(<Greeting />);
+describe("Greeting component", () => {
+  test("renders Hello World as a text", () => {
+    // Arrange
+    render(<Greeting />);
 
-  // Act
-  // ... nothing
+    // Act
+    // ... nothing
 
-  // Assert
-  // const helloWorldElement = screen.getByText('Hello World!');
-  // expect(helloWorldElement).toBeInTheDocument();
-  
-  expect(screen.getByText('Hello World', {exact:false})).toBeInTheDocument();
+    // Assert
+    // const helloWorldElement = screen.getByText('Hello World!');
+    // expect(helloWorldElement).toBeInTheDocument();
+
+    expect(
+      screen.getByText("Hello World", { exact: false })
+    ).toBeInTheDocument();
+  });
 });
