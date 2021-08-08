@@ -15,10 +15,11 @@ isInstructor = true;
 // More complex types
 let hobbies: string[] = ["Sports", "Cooking"];
 
-let person: {
+type Person = {
   name: string;
   age: number;
 };
+let person: Person;
 
 person = {
   name: "Max",
@@ -29,10 +30,7 @@ person = {
 //   isEmployee: true
 // };
 
-let people: {
-  name: string;
-  age: number;
-}[];
+let people: Person[];
 
 // Type inference
 let course: string | number = "React - The Complete Guide";
