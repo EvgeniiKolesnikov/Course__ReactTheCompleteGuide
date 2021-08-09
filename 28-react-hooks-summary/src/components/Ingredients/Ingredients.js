@@ -30,7 +30,8 @@ const Ingredients = () => {
     data,
     sendRequest,
     reqExtra,
-    reqIdentifer
+    reqIdentifer,
+    clear
   } = useHttp();
 
   // const [userIngredients, setUserIngredients] = useState([]);
@@ -97,7 +98,7 @@ const Ingredients = () => {
     //     ingredient: { id: responseData.name, ...ingredient }
     //   });
     // });
-  }, []);
+  }, [sendRequest]);
 
   const removeIngredientHandler = useCallback(ingredientId => {
       sendRequest(
@@ -123,10 +124,6 @@ const Ingredients = () => {
   // });
   );
 
-  const clearError = useCallback(() => {
-    // dispatchHttp({ type: 'CLEAR' });
-  }, []);
-
   const ingredientList = useMemo(() => {
     return (
       <IngredientList
@@ -139,7 +136,7 @@ const Ingredients = () => {
   return (
     <div className="App">
       {error && (
-        <ErrorModal onClose={clearError}>{error}</ErrorModal>
+        <ErrorModal onClose={clear}>{error}</ErrorModal>
       )}
 
       <IngredientForm onAddIngredient={addIngredientHandler} loading={isLoading} />
