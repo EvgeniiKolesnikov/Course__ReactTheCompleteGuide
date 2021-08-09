@@ -23,6 +23,10 @@ const Ingredients = () => {
       });
   }, []);
 
+  useEffect(() => {
+    console.log('RENDERING INGREDIENTS', userIngredients);
+  }, [userIngredients]);
+
   const addIngredientHandler = ingredient => {
     fetch(`${DB_LINK}/ingredients.json`, {
       method: 'POST',
