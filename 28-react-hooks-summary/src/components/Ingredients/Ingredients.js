@@ -54,8 +54,15 @@ const Ingredients = () => {
   // }, []);
 
   useEffect(() => {
-    console.log('RENDERING INGREDIENTS', userIngredients);
-  }, [userIngredients]);
+    if (!isLoading && !error && reqIdentifer === 'REMOVE_INGREDIENT') {
+      dispatch({ type: 'DELETE', id: reqExtra });
+    } else if (!isLoading && !error && reqIdentifer === 'ADD_INGREDIENT') {
+      dispatch({
+        type: 'ADD',
+        ingredient: { id: data.name, ...reqExtra }
+      });
+    }
+  }, [data, reqExtra, reqIdentifer, isLoading, error]);
 
   const filteredIngredientsHandler = useCallback(filteredIngredients => {
     // setUserIngredients(filteredIngredients);
@@ -63,7 +70,13 @@ const Ingredients = () => {
   }, []);
   
   const addIngredientHandler = useCallback(ingredient => {
-
+    sendRequest(
+      `${DB_LINK}/ingredients.json`,
+      'POST',
+      JSON.stringify(ingredient),
+      ingredient,
+      'ADD_INGREDIENT'
+    );
     // dispatchHttp({ type: 'SEND' });
     // fetch(`${DB_LINK}/ingredients.json`, {
     //   method: 'POST',
