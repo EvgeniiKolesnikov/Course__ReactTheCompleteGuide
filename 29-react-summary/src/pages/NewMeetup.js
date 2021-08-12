@@ -1,8 +1,16 @@
 import NewMeetupForm from '../components/meetups/NewMeetupForm';
+import { DB_LINK } from '../secure/keys';
 
-function NewMeetupPage(meetupData) {
-  function addMeetupHandler() {
-
+function NewMeetupPage() {
+  function addMeetupHandler(meetupData) {
+    console.log(`${DB_LINK}`);
+    fetch(`${DB_LINK}/meetups.json`, {
+      method: 'POST',
+      body: JSON.stringify(meetupData),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   }
   return (
     <section>
