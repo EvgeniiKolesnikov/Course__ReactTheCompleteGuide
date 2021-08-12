@@ -1,7 +1,11 @@
+import { useHistory } from 'react-router-dom';
+
 import NewMeetupForm from '../components/meetups/NewMeetupForm';
 import { DB_LINK } from '../secure/keys';
 
 function NewMeetupPage() {
+  const history = useHistory();
+
   function addMeetupHandler(meetupData) {
     console.log(`${DB_LINK}`);
     fetch(`${DB_LINK}/meetups.json`, {
@@ -10,6 +14,8 @@ function NewMeetupPage() {
       headers: {
         'Content-Type': 'application/json',
       },
+    }).then(() => {
+      history.replace('/');
     });
   }
   return (
