@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import MeetupList from '../components/meetups/MeetupList';
 import { DB_LINK } from '../secure/keys';
@@ -28,16 +28,29 @@ function AllMeetupsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [loadedMeetups, setLoadedMeetups] = useState([]);
 
-  fetch(`${DB_LINK}/meetups.json`)
-  .then(response => {
-    return response.json();
-  })
-  .then((data) => {
-    const meetups = [];
+  useEffect(() => {
+    setIsLoading(true);
 
-    setIsLoading(false);
-    setLoadedMeetups(meetups);
-  });
+    fetch(`${DB_LINK}/meetups.json`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        const meetups = [];
+
+        for (const key in data) {
+          const meetup = {
+            id: key,
+            ...data[key],
+          };
+
+          meetups.push(meetup);
+        }
+
+        setIsLoading(false);
+        setLoadedMeetups(meetups);
+      });
+  }, []);
 
   if (isLoading) {
     return (
